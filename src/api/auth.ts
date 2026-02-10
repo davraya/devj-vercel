@@ -1,13 +1,15 @@
 import axios from 'axios';
 import type { AuthResponse } from '../types/AuthResponse';
 import type { UserProfile } from '../types/UserProfile';
+import type{ CredentialResponse } from '@react-oauth/google';
+
 
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL
 
 
-export const handleCredentialResponse = async (response: any): Promise<AuthResponse> => {
+export const handleCredentialResponse = async (response: CredentialResponse): Promise<AuthResponse> => {
   const token = response.credential;
   const url = `${API_BASE_URL}/api/auth/token`;
 

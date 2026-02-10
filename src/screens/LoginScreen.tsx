@@ -1,4 +1,4 @@
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider, GoogleLogin, type CredentialResponse  } from '@react-oauth/google';
 import { handleCredentialResponse } from '../api/auth';
 import { useDispatch } from 'react-redux';
 import { login } from "../redux/appSlice";
@@ -9,12 +9,12 @@ const LoginScreen = () => {
     const dispatch = useDispatch();
 
 
-    const handleLogin = async (credentialResponse: any) => {
+    const handleLogin = async (credentialResponse: CredentialResponse) => {
 
         
         try {
             // Small delay to show the initial message
-            await new Promise(resolve => setTimeout(resolve, 500));
+            await new Promise<void>(resolve => setTimeout(resolve, 500));
             
             const userInfo = await handleCredentialResponse(credentialResponse);
             const jwtToken = userInfo.jwtToken;
@@ -32,6 +32,8 @@ const LoginScreen = () => {
             console.error("Login failed:", err);
         }
     };
+
+
     return (
         <>
         <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>

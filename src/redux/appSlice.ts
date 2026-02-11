@@ -2,19 +2,16 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 
 interface AppState {
-    userId: string;
+    userId: string | null;
     loggedIn: boolean;
     jwtToken: string | null;
 };    
 
 
-
-
-const token = localStorage.getItem('token');
 const initialState: AppState = {
-    userId: "",
-    loggedIn: !!token, // Set loggedIn to true if token exists
-    jwtToken: token,
+  jwtToken: localStorage.getItem('jwtToken'),
+  userId: localStorage.getItem('userId'),
+  loggedIn: !!localStorage.getItem('jwtToken'),
 };
 
 const appSlice = createSlice({
@@ -23,10 +20,13 @@ const appSlice = createSlice({
     reducers: {
         updateUserId(state, action: PayloadAction<string>) {
             state.userId = action.payload;
+            
+            localStorage.setItem('userId', action.payload);
         },
         login(state, action: PayloadAction<string>) {
             state.loggedIn = true;
             state.jwtToken = action.payload;
+            localStorage.setItem('jwtToken', action.payload);
         },
         logout(state) {
             state.loggedIn = false;

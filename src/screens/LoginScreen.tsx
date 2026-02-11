@@ -1,30 +1,33 @@
 import { GoogleOAuthProvider, GoogleLogin, type CredentialResponse  } from '@react-oauth/google';
 import { handleCredentialResponse } from '../api/auth';
 import { useDispatch } from 'react-redux';
-import { login } from "../redux/appSlice";
+import { login, updateUserId } from "../redux/appSlice";
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 
 const LoginScreen = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
     const handleLogin = async (credentialResponse: CredentialResponse) => {
 
         
         try {
-            // Small delay to show the initial message
-            await new Promise<void>(resolve => setTimeout(resolve, 500));
+           
             
             const userInfo = await handleCredentialResponse(credentialResponse);
-            const jwtToken = userInfo.jwtToken;
 
-            localStorage.setItem('token', jwtToken);
-            dispatch(login(jwtToken));
+            
+            dispatch(login(userInfo.jwtToken));
+            dispatch(updateUserId(userInfo.userId));
 
-            localStorage.setItem('userId', userInfo.userId);
 
-            console.log("Login successful, user ID:", userInfo.userId);
+
+            navigate("/journal");
   
 
                         

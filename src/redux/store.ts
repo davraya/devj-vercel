@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appReducer from "./appSlice.ts";
+import journalReducer from "./journalSlice.ts";
 
 export const store = configureStore({
   reducer: {
-    app: appReducer, // Add your app slice here
+    app: appReducer, 
+    journal: journalReducer, 
 
   },
 });

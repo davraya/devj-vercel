@@ -1,12 +1,8 @@
 import axios from 'axios';
 import type { AuthResponse } from '../types/AuthResponse';
-import type { UserProfile } from '../types/UserProfile';
 import type{ CredentialResponse } from '@react-oauth/google';
 
-
-
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 
 export const handleCredentialResponse = async (response: CredentialResponse): Promise<AuthResponse> => {
@@ -33,36 +29,5 @@ export const handleCredentialResponse = async (response: CredentialResponse): Pr
     }
     throw error; // Re-throw the error for the caller to handle
   }
-};
-
-export const handleGetUserInfo = async (response: any): Promise<UserProfile> => {
-    const jwtToken = response.credential;
-
-    const url = `${API_BASE_URL}api/users/me`;
-
-    try {
-        const { data } = await axios.get<UserProfile>(url, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${jwtToken}` // Proper Authorization header
-            },
-            withCredentials: true, // Add this line if using cookies
-
-        });
-
-        console.log(data); // Log the response data
-        return data; // Return the response data as UserProfile
-    } catch (error) {
-        if (axios.isAxiosError(error)) {
-            console.error('Axios error during user info fetch:', {
-                status: error.response?.status,
-                statusText: error.response?.statusText,
-                data: error.response?.data,
-            });
-        } else {
-            console.error('Unexpected error during user info fetch:', error);
-        }
-        throw error; // Re-throw the error for the caller to handle
-    }
 };
 

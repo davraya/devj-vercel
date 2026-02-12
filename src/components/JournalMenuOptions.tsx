@@ -4,7 +4,7 @@ import {deleteEntry} from "../api/journal";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
 import { useDispatch } from "react-redux";
-import { deleteEntryStore } from "../redux/journalSlice";
+import { deleteEntryStore, setSelectedEntryId } from "../redux/journalSlice";
 
 
 const JournalMenuOptions = () => {
@@ -22,6 +22,7 @@ const JournalMenuOptions = () => {
             try{
                 await deleteEntry(userId, jwtToken, selectedEntryId);
                 dispatch(deleteEntryStore(selectedEntryId));
+                dispatch(setSelectedEntryId(null));
     
             } catch (err) {
                 console.error("Failed to delete entry", err);

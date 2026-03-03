@@ -6,15 +6,20 @@ import { useDispatch } from "react-redux";
 import { logout } from "./redux/appSlice";
 import { clearJournal } from "./redux/journalSlice";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { useLocation } from "react-router-dom";
+
 
 
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const menuRef = useRef<HTMLDivElement>(null);
     const [isOpen, setIsOpen] = useState(false);
     const loggedIn = useSelector((state: RootState) => state.app.loggedIn);
+
 
     // Close menu on any click
     useEffect(() => {
@@ -30,13 +35,15 @@ const Header = () => {
         return () => document.removeEventListener("click", handleClickOutside);
     }, []);
 
-    if (!loggedIn) {
+    if (!loggedIn || location.pathname === "/") {
       return null;
     }
 
     return (
         <div className="header-container">
             <div className="app-name">Dev Journey</div>
+
+            <Navbar />
 
             <div className="user-menu-container">
 
@@ -61,7 +68,7 @@ const Header = () => {
                   </div>
                 )}
                 
-              </div>
+            </div>
 
         </div>
 

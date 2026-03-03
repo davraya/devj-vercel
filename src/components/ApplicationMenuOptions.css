@@ -1,0 +1,54 @@
+.menu-options {
+    position: relative;
+    display: inline-block;
+    font-family: sans-serif;
+    user-select: none; /* prevents selecting the container */
+
+}
+
+.three-dots {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 5px;
+    color: #ffffff; /* white dots for dark background */
+    transition: color 0.2s;
+}
+
+.three-dots:hover {
+    color: #00aaff; /* accent hover color */
+}
+
+.options {
+    position: absolute;
+    top: 40%;
+    /* right: 0; */
+    background-color: #1a1f3a; /* dark blue background */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    padding: 5px 0;
+    min-width: 140px;
+    border-radius: 6px;
+    color: #ffffff; /* default text color */
+    padding: 0px;
+}
+
+.options div {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+
+
+.delete-button {
+    color: #ff4d4d; /* bright red text */
+    background-color: rgba(255, 77, 77, 0.2); /* subtle red background */
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+    background-color: #660000; /* dark red hover */
+    color: #ffffff;
+}
+

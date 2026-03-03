@@ -1,0 +1,25 @@
+
+.applications-screen {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.interviews-list {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.add-application-button{
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    width: fit-content;
+}
+

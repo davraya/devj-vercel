@@ -1,0 +1,71 @@
+/* CARD CONTAINER */
+.interview-entry-card {
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
+  gap: 16px;
+
+  padding: 16px;
+  background: rgba(51, 65, 85, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  margin: 6px 0;
+  backdrop-filter: blur(6px);
+}
+
+
+
+/* FIELD */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* LABEL */
+.label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
+/* INPUTS & TEXTAREA */
+input,
+textarea,
+select.edit-select {
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(51, 65, 85, 0.15);
+  color: #fff;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+/* Placeholder style */
+input::placeholder,
+textarea::placeholder {
+  color: gray;
+}
+
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+
+select > option{
+  background-color: rgb(44, 44, 52);
+}
+
+.right{
+  display: flex;
+}
+
+.right-container{
+  flex: 1;
+}

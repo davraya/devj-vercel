@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appReducer from "./appSlice.ts";
 import journalReducer from "./journalSlice.ts";
+import interviewsReducer from "./interviewSlice.ts";
 
 export const store = configureStore({
   reducer: {
     app: appReducer, 
-    journal: journalReducer, 
+    journal: journalReducer,
+    interviews: interviewsReducer,
 
   },
 });

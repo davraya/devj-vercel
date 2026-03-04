@@ -32,3 +32,22 @@
   margin-bottom: 12px;
 
 }
+
+.divider {
+  margin: 16px 0;
+  opacity: 0.6;
+}
+
+.guest-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.guest-button:hover {
+  background: rgba(255,255,255,0.1);
+}

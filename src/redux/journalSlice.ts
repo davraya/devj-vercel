@@ -24,6 +24,7 @@ const journalSlice = createSlice({
     clearJournal(state) {
       state.journal = null;
       state.lastFetched = null;
+      state.selectedEntryId = null;
     },
     setSelectedEntryId(state, action: PayloadAction<string | null>) {
       state.selectedEntryId = action.payload;

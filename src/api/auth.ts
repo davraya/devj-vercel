@@ -31,3 +31,29 @@ export const handleCredentialResponse = async (response: CredentialResponse): Pr
   }
 };
 
+export const handleGuestCredentialResponse = async (): Promise<AuthResponse> => {
+  const url = `${API_BASE_URL}/api/auth/demo-user`;
+
+  try {
+    const { data } = await axios.post<AuthResponse>(url, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return data; // Return the response data as AuthResponse
+  } catch (error) {                                                                     
+    if (axios.isAxiosError(error)) {
+      console.error('Axios error during credential response handling:', {
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        data: error.response?.data,
+      });
+    } else {
+      console.error('Unexpected error during demo user credential response handling:', error);
+    }
+    throw error; // Re-throw the error for the caller to handle
+  }
+};
+
+

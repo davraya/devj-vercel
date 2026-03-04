@@ -1,5 +1,5 @@
 import { GoogleOAuthProvider, GoogleLogin, type CredentialResponse  } from '@react-oauth/google';
-import { handleCredentialResponse } from '../api/auth';
+import { handleCredentialResponse, handleGuestCredentialResponse } from '../api/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, updateUserId } from "../redux/appSlice";
 import { useNavigate } from 'react-router-dom';
@@ -40,6 +40,23 @@ const LoginScreen = () => {
         }
     };
 
+    const handleGuestLogin = async () => {
+
+        try {
+           
+            
+            const userInfo = await handleGuestCredentialResponse();
+            
+            dispatch(login(userInfo.jwtToken));
+            dispatch(updateUserId(userInfo.userId));
+
+            navigate("/journal");
+  
+                        
+        } catch (err) {
+            console.error("Login failed:", err);
+        }
+    };
 
     return (
         <div className='login-sceen'>
@@ -49,6 +66,14 @@ const LoginScreen = () => {
                  <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
                     <GoogleLogin onSuccess={handleLogin}></GoogleLogin>
                 </GoogleOAuthProvider>
+
+                <div className="divider">or</div>
+
+                <button className="guest-button" onClick={handleGuestLogin}>
+                Continue as Guest
+                </button>
+
+                
             </div>
 
         </div>

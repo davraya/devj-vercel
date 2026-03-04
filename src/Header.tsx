@@ -8,6 +8,7 @@ import { clearJournal } from "./redux/journalSlice";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { useLocation } from "react-router-dom";
+import { clearInterviews } from "./redux/interviewSlice";
 
 
 
@@ -58,6 +59,7 @@ const Header = () => {
                     <button className="user-menu-item logout" onClick={() => {
                       dispatch(logout());
                       dispatch(clearJournal()); 
+                      dispatch(clearInterviews());
                       navigate("/"); 
                       setIsOpen(!isOpen);
 

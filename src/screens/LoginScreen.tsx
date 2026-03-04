@@ -5,7 +5,7 @@ import { login, updateUserId } from "../redux/appSlice";
 import { useNavigate } from 'react-router-dom';
 import type { RootState } from "../redux/store";
 import { useEffect } from 'react';
-
+import './LoginScreen.css';
 
 
 
@@ -42,13 +42,16 @@ const LoginScreen = () => {
 
 
     return (
-        <>
-        <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-            <GoogleLogin
-                onSuccess={handleLogin}
-                ></GoogleLogin>
-        </GoogleOAuthProvider>
-        </>
+        <div className='login-sceen'>
+            <div className='login-container'>
+                <h1 className='login-title'>Dev Journey</h1>
+                <p>Please log in with your Google account to continue.</p>
+                 <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+                    <GoogleLogin onSuccess={handleLogin}></GoogleLogin>
+                </GoogleOAuthProvider>
+            </div>
+
+        </div>
     )
 }
 

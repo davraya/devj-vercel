@@ -1,9 +1,9 @@
 /* Full screen wrapper */
 .login-sceen {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center; /* horizontal */
-  align-items: center;     /* vertical */
+  display: grid;
+  place-items: center;
+  min-height: 90vh;
+
 }
 
 /* Centered card */

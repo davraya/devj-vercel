@@ -63,10 +63,11 @@ const LoginScreen = () => {
             <div className='login-container'>
                 <h1 className='login-title'>Dev Journey</h1>
                 <p>Please log in with your Google account to continue.</p>
-                 <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-                    <GoogleLogin onSuccess={handleLogin}></GoogleLogin>
-                </GoogleOAuthProvider>
-
+                <div className='google-login-button'>
+                    <GoogleOAuthProvider  clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+                        <GoogleLogin onSuccess={handleLogin}></GoogleLogin>
+                    </GoogleOAuthProvider>
+                </div>
                 <div className="divider">or</div>
 
                 <button className="guest-button" onClick={handleGuestLogin}>

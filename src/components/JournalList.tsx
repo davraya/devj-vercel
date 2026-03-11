@@ -23,15 +23,15 @@ const JournalList = ({ entries }: JournalListProps) => {
                 
             </div>
 
-            <div className="journal-list-content">
+            <div data-cy="journal-list-content" className="journal-list-content">
 
             {entries.map((entry) => {
                return (
-                    <div key={entry.id} onClick={() => dispatch(setSelectedEntryId(entry.id))}>
+                    <div data-cy="journal-entry" key={entry.id} onClick={() => dispatch(setSelectedEntryId(entry.id))}>
                         <div className="journal-entry-card">
                             <div className="journal-entry-content">
                                 <div className="journal-entry-text">
-                                    <div className="journal-entry-title">{entry.title}</div>
+                                    <div data-cy="journal-entry-title" className="journal-entry-title">{entry.title}</div>
                                     <div className="journal-entry-date">{entry.date}</div>
                                 </div>
                             </div>

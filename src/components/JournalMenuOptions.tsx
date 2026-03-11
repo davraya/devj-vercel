@@ -47,10 +47,10 @@ const JournalMenuOptions = () => {
 
     return (
         <div className="menu-options" ref={menuRef}>
-            <div className="three-dots" onClick={(e) => { e.stopPropagation();  setIsOpen(!isOpen); }}>⋮</div>            
+            <div data-cy="journal-three-dots" className="three-dots" onClick={(e) => { e.stopPropagation();  setIsOpen(!isOpen); }}>⋮</div>            
                 { isOpen && (
                 <div className="options">
-                    <div className="delete-button" onClick={handleDeleteEntry}>Delete</div>
+                    <div data-cy="delete-entry-button" className="delete-button" onClick={handleDeleteEntry}>Delete</div>
                 </div>
                 )}
             </div>

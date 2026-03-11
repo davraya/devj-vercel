@@ -87,7 +87,7 @@ const LoginScreen = () => {
 
                     <div className="divider">or</div>
 
-                    <button className="guest-button" onClick={handleGuestLogin}>
+                    <button data-cy="guest-login-button" className="guest-button" onClick={handleGuestLogin}>
                         Continue as Guest
                     </button>
                 </>

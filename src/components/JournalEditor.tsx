@@ -1,6 +1,6 @@
 import "./JournalEditor.css"
 import { editEntry } from "../api/journal";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
 import { useDispatch } from "react-redux";
@@ -55,16 +55,23 @@ const JournalEditor = ({ title, content, date }: JournalEditorProps) => {
         return () => clearTimeout(timeout); 
     }, [localTitle, localContent, selectedEntryId, userId, jwtToken, dispatch]);
 
+
+    const lastEntryIdRef = useRef<string | null>(null);
+
     useEffect(() => {
-        const run = async () => {
+    const run = async () => {
+        if (selectedEntryId && selectedEntryId !== lastEntryIdRef.current) {
             const entry = journal?.journalEntries.find((e) => e.id === selectedEntryId);
             if (entry) {
-                if (entry.title !== localTitle) setLocalTitle(entry.title);
-                if (entry.content !== localContent) setLocalContent(entry.content);
+                setLocalTitle(entry.title);
+                setLocalContent(entry.content);
+                lastEntryIdRef.current = selectedEntryId;
             }
         }
-        run();
+    }
+    run();
     }, [selectedEntryId, journal]);
+
 
 
     if (!selectedEntryId) {
@@ -81,7 +88,9 @@ const JournalEditor = ({ title, content, date }: JournalEditorProps) => {
 
             <div className="journal-editor-header">
                 <div>
-                    <input className="journal-title-input"
+                    <input 
+                    data-cy="journal-title-input"
+                    className="journal-title-input"
                     value={localTitle}    
                     onChange={(e) => setLocalTitle(e.target.value)}  
                     placeholder="Title"/>
@@ -92,7 +101,9 @@ const JournalEditor = ({ title, content, date }: JournalEditorProps) => {
                 </div>
             </div>
             
-            <textarea className="journal-content-textarea"
+            <textarea 
+                data-cy="journal-content-textarea"
+                className="journal-content-textarea"
                 value={localContent}
                 onChange={(e) => setLocalContent(e.target.value)}
                 placeholder="Start typing..."

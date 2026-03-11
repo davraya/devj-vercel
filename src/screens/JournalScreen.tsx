@@ -48,7 +48,7 @@ const JournalScreen = () => {
     return (
         <div className="journal-screen">
             <div className="journal-actions">
-                <button className="add-entry-button" onClick={handleAddEntry}>Add Entry</button>
+                <button data-cy="add-entry-button" className="add-entry-button" onClick={handleAddEntry}>Add Entry</button>
             </div>
             <div className="journal-container">
                 <JournalList entries={journal?.journalEntries ?? []}/>

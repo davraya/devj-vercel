@@ -70,7 +70,7 @@ const InterviewCard = ({ id, position, company, status, interviewer, notes }: In
     
 
     return (
-        <div className="interview-entry-card">
+        <div data-cy="interview-entry" className="interview-entry-card">
             <div className="left">
                 <div className="field">
                 <span className="label">Position</span>

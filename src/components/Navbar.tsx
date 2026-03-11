@@ -6,7 +6,9 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <Link to="/journal" className="nav-link">Journal</Link>
-      <Link to="/application" className="nav-link">Applications</Link>
+      <Link to="/application" className="nav-link" data-cy="applications-link">
+        Applications
+      </Link>
     </nav>
     )
 }

@@ -55,7 +55,7 @@ const ApplicationsScreen = () => {
 
     return (
         <div className="applications-screen">
-            <button className="add-application-button" onClick={handleAddApplication}> Add Application</button>
+            <button data-cy="add-application-button" className="add-application-button" onClick={handleAddApplication}> Add Application</button>
             <div className="interviews-list">
             {interviews.map((interview) => {
                 return (
